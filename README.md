@@ -34,6 +34,46 @@ __Algorithm:__
 
 __Programme:__
 
+clc; clear all; close all;
+
+Am = 13.9;        % Message amplitude
+Ac = 29.8;        % Carrier amplitude
+fm = 420;         % Message frequency (Hz)
+fc = 10000;       % Carrier frequency (choose a standard value)
+kf = 100;         % Frequency sensitivity
+
+Fs = 100000;      % Sampling frequency
+T = 0.01;         % Duration
+t = 0:1/Fs:T;
+
+% Message signal
+m = Am * sin(2*pi*fm*t);
+
+% FM signal
+y = Ac * cos(2*pi*fc*t + (kf/fm)*m);
+
+% Plotting
+figure;
+
+subplot(3,1,1);
+plot(t,m);
+title('Message Signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+subplot(3,1,2);
+plot(t, Ac*cos(2*pi*fc*t));
+title('Carrier Signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+subplot(3,1,3);
+plot(t,y);
+title('FM Modulated Signal');
+xlabel('Time');
+ylabel('Amplitude');
 __Output:__
+![WhatsApp Image 2025-11-26 at 21 03 26_43eecca6](https://github.com/user-attachments/assets/a0b70ec8-5355-4ebb-a403-e31aeb1b2421)
 
 __Result:__
+![WhatsApp Image 2025-11-26 at 21 04 14_9ce57291](https://github.com/user-attachments/assets/98854888-2a57-498a-8da1-ee36af85af35)
